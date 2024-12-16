@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Typora2024最新版破解方法</title>
+    <link href="/2024/12/16/Typora2024%E6%9C%80%E6%96%B0%E7%89%88%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/"/>
+    <url>/2024/12/16/Typora2024%E6%9C%80%E6%96%B0%E7%89%88%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、下载并安装Typora"><a href="#一、下载并安装Typora" class="headerlink" title="一、下载并安装Typora"></a>一、下载并安装Typora</h2><p>安装Typora 打开官网 下载并安装最新版即可<br>点击访问Typora <a href="https://typoraio.cn/">https://typoraio.cn/</a><br>点击立即下载</p><h2 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h2><p>1、打开你的Typora的安装路径<br>打开安装路径下这个文件夹</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">typora\resources\page-dist\static\js<br></code></pre></td></tr></table></figure><p>在这个文件夹中找到这个文件</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">LicenseIndex</span>.<span class="hljs-number">180</span>dd4c7.<span class="hljs-number">4</span>da8909c.chunk.js<br></code></pre></td></tr></table></figure><p>右键用记事本打开<br>将文件中的</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">e.hasActivated<span class="hljs-operator">=</span><span class="hljs-string">&quot;true&quot;</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>e.hasActivated<br></code></pre></td></tr></table></figure><p>替换成：</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">e.hasActivated<span class="hljs-operator">=</span><span class="hljs-string">&quot;true&quot;</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;true&quot;</span><br></code></pre></td></tr></table></figure><p>2、继续找到</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">Typora\resources\page-dist\license.html<br></code></pre></td></tr></table></figure><p>用记事本并查找到</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-section">&lt;/body&gt;</span><span class="hljs-section">&lt;/html&gt;</span><br></code></pre></td></tr></table></figure><p>替换为：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"><span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">close</span>();&#125;,<span class="hljs-number">5</span>);&#125;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure><h2 id="去除软件左下角未激活提示"><a href="#去除软件左下角未激活提示" class="headerlink" title="去除软件左下角未激活提示"></a>去除软件左下角未激活提示</h2><p>以下路径</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">Typora\resources\locales\zh-Hans.lproj\Panel.json <br></code></pre></td></tr></table></figure><p>查找到</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;UNREGISTERED&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;未激活&quot;</span><br></code></pre></td></tr></table></figure><p>替换成</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;UNREGISTERED&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot; &quot;</span><br></code></pre></td></tr></table></figure><h3 id="激活完成"><a href="#激活完成" class="headerlink" title="激活完成"></a>激活完成</h3><p>直接打开该软件，即可完美跳过提示。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>工具使用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>初始化的博客</title>
     <link href="/2024/12/13/%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     <url>/2024/12/13/%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
