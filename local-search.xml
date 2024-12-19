@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>excel批量生成sql</title>
+    <link href="/2024/12/18/excel%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90sql/"/>
+    <url>/2024/12/18/excel%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90sql/</url>
+    
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>有一个team想修改一个表中的一个字段，大约有几十条数据，我要准备好脚本给DBA去修改</p><h1 id="开干"><a href="#开干" class="headerlink" title="开干"></a>开干</h1><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">=<span class="hljs-string">&quot;UPDATE REVISIONS SET DDOCTITLE = &#x27;&quot;</span>&amp;<span class="hljs-symbol">B1</span>&amp;<span class="hljs-string">&quot;&#x27; WHERE DDOCNAME=&#x27;&quot;</span>&amp;<span class="hljs-symbol">A1</span>&amp;<span class="hljs-string">&quot;&#x27;;&quot;</span><br></code></pre></td></tr></table></figure><p>然后往下拉就可以拉出对应的sql了</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>工具使用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>postman循环调用一个接口，传不同参数</title>
     <link href="/2024/12/17/postman%E5%BE%AA%E7%8E%AF%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3/"/>
     <url>/2024/12/17/postman%E5%BE%AA%E7%8E%AF%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3/</url>
