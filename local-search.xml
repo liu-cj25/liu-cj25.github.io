@@ -8,7 +8,7 @@
     <link href="/2024/12/18/excel%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90sql/"/>
     <url>/2024/12/18/excel%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90sql/</url>
     
-    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>有一个team想修改一个表中的一个字段，大约有几十条数据，我要准备好脚本给DBA去修改</p><h1 id="开干"><a href="#开干" class="headerlink" title="开干"></a>开干</h1><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">=<span class="hljs-string">&quot;UPDATE REVISIONS SET DDOCTITLE = &#x27;&quot;</span>&amp;<span class="hljs-symbol">B1</span>&amp;<span class="hljs-string">&quot;&#x27; WHERE DDOCNAME=&#x27;&quot;</span>&amp;<span class="hljs-symbol">A1</span>&amp;<span class="hljs-string">&quot;&#x27;;&quot;</span><br></code></pre></td></tr></table></figure><p>然后往下拉就可以拉出对应的sql了</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>有一个team想修改一个表中的一个字段，大约有几十条数据，我要准备好脚本给DBA去修改</p><h1 id="开干"><a href="#开干" class="headerlink" title="开干"></a>开干</h1><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">=<span class="hljs-string">&quot;UPDATE REVISIONS SET DDOCTITLE = &#x27;&quot;</span>&amp;<span class="hljs-symbol">B1</span>&amp;<span class="hljs-string">&quot;&#x27; WHERE DDOCNAME=&#x27;&quot;</span>&amp;<span class="hljs-symbol">A1</span>&amp;<span class="hljs-string">&quot;&#x27;;&quot;</span><br></code></pre></td></tr></table></figure><p>然后往下拉就可以拉出对应的sql了</p><p><img src="C:\Users\liuca10\AppData\Roaming\Typora\typora-user-images\image-20241219162216990.png![image-20241219163147430](C:/Users/liuca10/AppData/Roaming/Typora/typora-user-images/image-20241219163147430.png" alt="image-20241219162216990"></p><p><img src="C:/Users/liuca10/AppData/Roaming/Typora/typora-user-images/image-20241219163342059.png" alt="image-20241219163342059"></p>]]></content>
     
     
     
@@ -77,7 +77,7 @@
     <link href="/2024/12/13/%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     <url>/2024/12/13/%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     
-    <content type="html"><![CDATA[<h3 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h3><p>你好哦</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h3><p>你好哦</p><h2 id="我尝试加入了一个图片"><a href="#我尝试加入了一个图片" class="headerlink" title="我尝试加入了一个图片"></a>我尝试加入了一个图片</h2><p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/ab415120de8815da31fb5c8c96ed4d7.png" alt="ab415120de8815da31fb5c8c96ed4d7"></p>]]></content>
     
     
     <categories>
