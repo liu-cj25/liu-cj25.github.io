@@ -19,24 +19,36 @@
   <meta name="author" content="cj">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景有一个team想修改一个表中的一个字段，大约有几十条数据，我要准备好脚本给DBA去修改，手动补有点慢，我们用excel来帮我们生成对应的sql以及填充好参数。 开干1&#x3D;&quot;UPDATE REVISIONS SET DDOCTITLE &#x3D; &#x27;&quot;&amp;B1&amp;&quot;&#x27; WHERE DDOCNAME&#x3D;&#x27;&quot;&amp;A1&amp;amp">
+    <meta name="description" content="用github搭建图床一开始的博客是不支持图片的，后来觉得有些记录是要用图片去记录，所以我们今天搞一个github图床，直接白嫖。 1、新建仓库  2、生成token令牌  然后选择经典的Tokens就可以 然后创建Tokens 接下来它可能跳转到登录界面让你输入密码，该怎么输入就输入即可。就是你此github用户的登录密码。 然后可以给令牌(token)做个Note(标记)，然后选择令牌(tok">
 <meta property="og:type" content="article">
-<meta property="og:title" content="excel批量生成sql">
-<meta property="og:url" content="https://liu-cj25.github.io/2024/12/18/excel%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90sql/index.html">
+<meta property="og:title" content="如何白嫖一个图床放图片">
+<meta property="og:url" content="https://liu-cj25.github.io/2024/12/19/%E5%A6%82%E4%BD%95%E7%99%BD%E5%AB%96%E4%B8%80%E4%B8%AA%E5%9B%BE%E5%BA%8A%E6%94%BE%E5%9B%BE%E7%89%87/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="背景有一个team想修改一个表中的一个字段，大约有几十条数据，我要准备好脚本给DBA去修改，手动补有点慢，我们用excel来帮我们生成对应的sql以及填充好参数。 开干1&#x3D;&quot;UPDATE REVISIONS SET DDOCTITLE &#x3D; &#x27;&quot;&amp;B1&amp;&quot;&#x27; WHERE DDOCNAME&#x3D;&#x27;&quot;&amp;A1&amp;amp">
+<meta property="og:description" content="用github搭建图床一开始的博客是不支持图片的，后来觉得有些记录是要用图片去记录，所以我们今天搞一个github图床，直接白嫖。 1、新建仓库  2、生成token令牌  然后选择经典的Tokens就可以 然后创建Tokens 接下来它可能跳转到登录界面让你输入密码，该怎么输入就输入即可。就是你此github用户的登录密码。 然后可以给令牌(token)做个Note(标记)，然后选择令牌(tok">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241220083827676.png">
-<meta property="article:published_time" content="2024-12-18T08:57:12.000Z">
-<meta property="article:modified_time" content="2024-12-20T00:38:38.053Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165442808.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165530827.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155131903-1370211995.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155142441-1964343452.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165703915.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165736213.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165748188.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165924332.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155430934-535758820.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219170015197.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155731987-116968716.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155740340-740255370.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155749044-922027867.png">
+<meta property="article:published_time" content="2024-12-19T08:47:23.000Z">
+<meta property="article:modified_time" content="2024-12-19T09:06:12.094Z">
 <meta property="article:author" content="cj">
 <meta property="article:tag" content="工具使用">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241220083827676.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165442808.png">
   
   
   
-  <title>excel批量生成sql - Hexo</title>
+  <title>如何白嫖一个图床放图片 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="excel批量生成sql"></span>
+            <span id="subtitle" data-typed-text="如何白嫖一个图床放图片"></span>
           
         </div>
 
@@ -213,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-18 16:57" pubdate>
-          December 18, 2024 pm
+        <time datetime="2024-12-19 16:47" pubdate>
+          December 19, 2024 pm
         </time>
       </span>
     
@@ -225,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          100 words
+          887 words
         
       </span>
     
@@ -236,7 +248,7 @@
         
         
         
-          1 mins
+          8 mins
         
       </span>
     
@@ -273,16 +285,63 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">excel批量生成sql</h1>
+            <h1 id="seo-header">如何白嫖一个图床放图片</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>有一个team想修改一个表中的一个字段，大约有几十条数据，我要准备好脚本给DBA去修改，手动补有点慢，我们用excel来帮我们生成对应的sql以及填充好参数。</p>
-<h1 id="开干"><a href="#开干" class="headerlink" title="开干"></a>开干</h1><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">=<span class="hljs-string">&quot;UPDATE REVISIONS SET DDOCTITLE = &#x27;&quot;</span>&amp;<span class="hljs-symbol">B1</span>&amp;<span class="hljs-string">&quot;&#x27; WHERE DDOCNAME=&#x27;&quot;</span>&amp;<span class="hljs-symbol">A1</span>&amp;<span class="hljs-string">&quot;&#x27;;&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>然后往下拉就可以拉出对应的sql了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241220083827676.png" srcset="/img/loading.gif" lazyload alt="image-20241220083827676"></p>
+                <h1 id="用github搭建图床"><a href="#用github搭建图床" class="headerlink" title="用github搭建图床"></a>用github搭建图床</h1><p>一开始的博客是不支持图片的，后来觉得有些记录是要用图片去记录，所以我们今天搞一个github图床，直接白嫖。</p>
+<h2 id="1、新建仓库"><a href="#1、新建仓库" class="headerlink" title="1、新建仓库"></a>1、新建仓库</h2><p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165442808.png" srcset="/img/loading.gif" lazyload alt="image-20241219165442808"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165530827.png" srcset="/img/loading.gif" lazyload alt="image-20241219165530827"></p>
+<h2 id="2、生成token令牌"><a href="#2、生成token令牌" class="headerlink" title="2、生成token令牌"></a>2、生成token令牌</h2><p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155131903-1370211995.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155142441-1964343452.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>然后选择经典的Tokens就可以<img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165703915.png" srcset="/img/loading.gif" lazyload alt="image-20241219165703915"></p>
+<p>然后创建Tokens</p>
+<p>接下来它可能跳转到登录界面让你输入密码，该怎么输入就输入即可。就是你此github用户的登录密码。</p>
+<p>然后可以给令牌(token)做个Note(标记)，然后选择令牌(token)截止时间。我选了永久</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165736213.png" srcset="/img/loading.gif" lazyload alt="image-20241219165736213"></p>
+<p>紧接着把这个repo全部选上：<img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165748188.png" srcset="/img/loading.gif" lazyload alt="image-20241219165748188"></p>
+<p>这个Token是你的服务器（即你的账户下的github服务器）的令牌，暂时和你的仓库还没有什么关系。</p>
+<p>然后创建完以后，就会出现一串Token字符串，你把这个Token数字复制、保存下来(可以新创一个txt文件，保存到里面)。因为你可能一会儿就见不到了。</p>
+<h2 id="3-使用PicGo来实现图片上传"><a href="#3-使用PicGo来实现图片上传" class="headerlink" title="3 使用PicGo来实现图片上传"></a>3 使用PicGo来实现图片上传</h2><h3 id="下载picGo"><a href="#下载picGo" class="headerlink" title="下载picGo"></a>下载picGo</h3><p>首先要说一下，PicGo是一款软件。我们就是用它来实现图片上传的。所以说，它是核心软件。</p>
+<p>下载方法也比较简单。这里推荐山东大学的镜像网站：</p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.sdu.edu.cn/github-release/Molunerfinn_PicGo/v2.3.1/">https://mirrors.sdu.edu.cn/github-release/Molunerfinn_PicGo/v2.3.1/</a></p>
+<p>根据自己的电脑来选，window的选exe，mac的选dmg</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219165924332.png" srcset="/img/loading.gif" lazyload alt="image-20241219165924332"></p>
+<h3 id="picGo配置"><a href="#picGo配置" class="headerlink" title="picGo配置"></a>picGo配置</h3><p>1、选择【图床设置】-&gt;【Github】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155430934-535758820.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>2、然后进行配置：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20241219170015197.png" srcset="/img/loading.gif" lazyload alt="image-20241219170015197"></p>
+<p>解释下：</p>
+<ul>
+<li><p>仓库名就是： 你github的用户名+仓库名： 例如我的就是liu-cj25&#x2F;lcjImg</p>
+</li>
+<li><p>分支名注意是main 还是master</p>
+</li>
+<li><p>token就是上一步在github生成的token</p>
+</li>
+<li><p>存储路径就是该新仓库的文件夹（自己看着来）</p>
+</li>
+<li><p>自定义域名：</p>
+</li>
+<li><p>这个是比较关键的。我们可以用一个免费的加速域名作为我们自定义域名。</p>
+<p>那么你所设置的就应当为<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/">https://cdn.jsdelivr.net/gh/</a> +你的账户名+你的仓库名@你的分支名。比如，我上面的就是<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master%E6%8C%89%E7%85%A7%E9%9C%80%E8%A6%81%E6%94%B9%E6%88%90%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E3%80%82">https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master按照需要改成你自己的。</a></p>
+<p>需要注意的是，这里一定要设置成@，而不要设置成 &#x2F; 我也是花了很长很长时间才搞明白。。。设置成 &#x2F; 以后，你会惊奇地发现，它在你的typora里面显示不了。。。</p>
+<p>配置完以后，就可以点击确定，然后也可以将其设置为默认图床。</p>
+</li>
+</ul>
+<p>3、用picGo实现上传</p>
+<p>上传的方式很简单，直接拖拽或者选择图片进行上传就ok了，然后我们去看github的img文件夹下有没有新upload的文件</p>
+<h2 id="4、设置Typora实现自动上传"><a href="#4、设置Typora实现自动上传" class="headerlink" title="4、设置Typora实现自动上传"></a>4、设置Typora实现自动上传</h2><p>1、首先，点击【文件】-&gt;【偏好设置】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155731987-116968716.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>2、再次，选择【图像】。</p>
+<p>然后按照下图所示，插入图片时选择上传图片。然后在上传服务内选择PicGo，并选择PicGo.exe的路径。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155740340-740255370.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>这里的可以这样来去配置：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/2609461-20240425155749044-922027867.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>然后这样的话，你将你的截图直接粘贴到Typora里面，你的Typora会将链接直接通过PicGo上传到你Github服务器的仓库中。然后别人和你就都可以通过访问这个链接来实现图片共享啦。这样，你在发送你的文件的时候，图片就不会丢失了。</p>
+<h2 id="5、温馨提示"><a href="#5、温馨提示" class="headerlink" title="5、温馨提示"></a>5、温馨提示</h2><p>1、注意你的Typora的语言，如果是英文版本的话，设置picGo的时候是不会显示exe的（亲测）</p>
+<p>2、token一定要记下来，因为你关了这个页面 就不会显示了，要重新生成</p>
 
                 
               </div>
@@ -290,6 +349,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
     <div class="post-meta">
@@ -307,8 +387,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>excel批量生成sql</div>
-      <div>https://liu-cj25.github.io/2024/12/18/excel批量生成sql/</div>
+      <div>如何白嫖一个图床放图片</div>
+      <div>https://liu-cj25.github.io/2024/12/19/如何白嫖一个图床放图片/</div>
     </div>
     <div class="license-meta">
       
@@ -320,7 +400,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 18, 2024</div>
+          <div>December 19, 2024</div>
         </div>
       
       
@@ -352,18 +432,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/19/%E5%A6%82%E4%BD%95%E7%99%BD%E5%AB%96%E4%B8%80%E4%B8%AA%E5%9B%BE%E5%BA%8A%E6%94%BE%E5%9B%BE%E7%89%87/" title="如何白嫖一个图床放图片">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何白嫖一个图床放图片</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/17/postman%E5%BE%AA%E7%8E%AF%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3/" title="postman循环调用一个接口，传不同参数">
-                        <span class="hidden-mobile">postman循环调用一个接口，传不同参数</span>
+                      <a href="/2024/12/18/excel%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90sql/" title="excel批量生成sql">
+                        <span class="hidden-mobile">excel批量生成sql</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
