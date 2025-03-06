@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Gitlab的SSHKEY过期如何刷新</title>
+    <link href="/2025/03/06/Gitlab%E7%9A%84SSHKEY%E8%BF%87%E6%9C%9F%E5%A6%82%E4%BD%95%E5%88%B7%E6%96%B0/"/>
+    <url>/2025/03/06/Gitlab%E7%9A%84SSHKEY%E8%BF%87%E6%9C%9F%E5%A6%82%E4%BD%95%E5%88%B7%E6%96%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于公司的策略是设置了GitLab的sshKey的有效期是一年，今天刚好过期了，所以要生成新的sshKey对，并将新的公钥添加到GitLab账户中。</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>打开终端（Linux&#x2F;macOS）或 Git Bash（Windows），输入以下命令生成新的 SSH Key：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br></code></pre></td></tr></table></figure><ul><li><strong>说明</strong>：<ul><li><code>ed25519</code> 是更安全且推荐的新算法，如果系统不支持，可以用 <code>-t rsa -b 4096</code> 替代。</li><li><code>-C</code> 后的内容可以是你的邮箱或任意标识符，仅用于标记。</li></ul></li><li>按提示选择保存路径（默认按回车即可）和设置密码（可选）。</li></ul><h3 id="2-查看并复制公钥"><a href="#2-查看并复制公钥" class="headerlink" title="2. 查看并复制公钥"></a><strong>2. 查看并复制公钥</strong></h3><p>生成后，查看并复制公钥内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519.pub<br></code></pre></td></tr></table></figure><p>或手动用文本编辑器打开 <code>id_ed25519.pub</code> 文件，复制全部内容（以 <code>ssh-ed25519</code> 开头）。</p><h3 id="3-将新公钥添加到-GitLab"><a href="#3-将新公钥添加到-GitLab" class="headerlink" title="3. 将新公钥添加到 GitLab"></a><strong>3. 将新公钥添加到 GitLab</strong></h3><ol><li>登录 GitLab，点击右上角头像 → <strong>Preferences</strong> → <strong>SSH Keys</strong>。</li><li>在 <strong>Key</strong> 文本框中粘贴复制的公钥内容。</li><li>填写标题（如 <code>New Key 2025</code>），点击 <strong>Add key</strong>。</li></ol><h3 id="4-删除旧的-SSH-Key（可选）"><a href="#4-删除旧的-SSH-Key（可选）" class="headerlink" title="4. 删除旧的 SSH Key（可选）"></a><strong>4. 删除旧的 SSH Key（可选）</strong></h3><p>如果旧 Key 已不再使用，可以在同一页面找到旧 Key，点击 <strong>Revoke</strong> 移除。</p><h3 id="5-测试-SSH-连接"><a href="#5-测试-SSH-连接" class="headerlink" title="5. 测试 SSH 连接"></a><strong>5. 测试 SSH 连接</strong></h3><p>在终端运行以下命令测试连接：</p><p>bash</p><p>复制</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> -T git<span class="hljs-variable">@gitlab</span>.com<br></code></pre></td></tr></table></figure><ul><li>如果看到 <code>Welcome to GitLab, @username!</code> 表示成功。</li></ul><p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20250306110026014.png" alt="image-20250306110026014"></p><p>完成后，你的 GitLab SSH 连接将使用新的 Key。试了下拉代码。没问题！</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>工具使用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>春社</title>
     <link href="/2025/02/06/%E6%98%A5%E7%A4%BE/"/>
     <url>/2025/02/06/%E6%98%A5%E7%A4%BE/</url>
