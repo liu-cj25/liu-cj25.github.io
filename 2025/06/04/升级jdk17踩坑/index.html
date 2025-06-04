@@ -19,24 +19,21 @@
   <meta name="author" content="cj">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景由于公司的策略是设置了GitLab的sshKey的有效期是一年，今天刚好过期了，所以要生成新的sshKey对，并将新的公钥添加到GitLab账户中。 步骤打开终端（Linux&#x2F;macOS）或 Git Bash（Windows），输入以下命令生成新的 SSH Key： 1ssh-keygen -t ed25519 -C &quot;your_email@example.com&amp;quot">
+    <meta name="description" content="升级jdk17遇到的坑1、证书问题公司的base image是有证书版本的，没证书版本的，一开始没引用正确导致改了好多配置，忽略证书、替换证书无用功等等 2、jdk17可能会遇到反射等问题，要在pom里面加入配置12345678910111213141516171819202122232425262728293031323334&lt;build&gt;    &lt;plugins&gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gitlab的SSHKEY过期如何刷新">
-<meta property="og:url" content="https://liu-cj25.github.io/2025/03/06/Gitlab%E7%9A%84SSHKEY%E8%BF%87%E6%9C%9F%E5%A6%82%E4%BD%95%E5%88%B7%E6%96%B0/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://liu-cj25.github.io/2025/06/04/%E5%8D%87%E7%BA%A7jdk17%E8%B8%A9%E5%9D%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="背景由于公司的策略是设置了GitLab的sshKey的有效期是一年，今天刚好过期了，所以要生成新的sshKey对，并将新的公钥添加到GitLab账户中。 步骤打开终端（Linux&#x2F;macOS）或 Git Bash（Windows），输入以下命令生成新的 SSH Key： 1ssh-keygen -t ed25519 -C &quot;your_email@example.com&amp;quot">
+<meta property="og:description" content="升级jdk17遇到的坑1、证书问题公司的base image是有证书版本的，没证书版本的，一开始没引用正确导致改了好多配置，忽略证书、替换证书无用功等等 2、jdk17可能会遇到反射等问题，要在pom里面加入配置12345678910111213141516171819202122232425262728293031323334&lt;build&gt;    &lt;plugins&gt;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20250306110026014.png">
-<meta property="article:published_time" content="2025-03-06T02:33:08.000Z">
-<meta property="article:modified_time" content="2025-03-06T03:00:52.735Z">
+<meta property="article:published_time" content="2025-06-04T08:24:18.404Z">
+<meta property="article:modified_time" content="2025-06-04T08:40:37.944Z">
 <meta property="article:author" content="cj">
-<meta property="article:tag" content="工具使用">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20250306110026014.png">
   
   
   
-  <title>Gitlab的SSHKEY过期如何刷新 - Hexo</title>
+  <title>Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Gitlab的SSHKEY过期如何刷新"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -213,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-06 10:33" pubdate>
-          March 6, 2025 am
+        <time datetime="2025-06-04 16:24" pubdate>
+          June 4, 2025 pm
         </time>
       </span>
     
@@ -225,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          339 words
+          476 words
         
       </span>
     
@@ -236,7 +233,7 @@
         
         
         
-          3 mins
+          4 mins
         
       </span>
     
@@ -273,43 +270,37 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Gitlab的SSHKEY过期如何刷新</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于公司的策略是设置了GitLab的sshKey的有效期是一年，今天刚好过期了，所以要生成新的sshKey对，并将新的公钥添加到GitLab账户中。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>打开终端（Linux&#x2F;macOS）或 Git Bash（Windows），输入以下命令生成新的 SSH Key：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="升级jdk17遇到的坑"><a href="#升级jdk17遇到的坑" class="headerlink" title="升级jdk17遇到的坑"></a>升级jdk17遇到的坑</h1><h2 id="1、证书问题"><a href="#1、证书问题" class="headerlink" title="1、证书问题"></a>1、证书问题</h2><p>公司的base image是有证书版本的，没证书版本的，一开始没引用正确导致改了好多配置，忽略证书、替换证书无用功等等</p>
+<h2 id="2、jdk17可能会遇到反射等问题，要在pom里面加入配置"><a href="#2、jdk17可能会遇到反射等问题，要在pom里面加入配置" class="headerlink" title="2、jdk17可能会遇到反射等问题，要在pom里面加入配置"></a>2、jdk17可能会遇到反射等问题，要在pom里面加入配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">jvmArguments</span>&gt;</span><br>                    --add-opens=java.base/java.util=ALL-UNNAMED<br>                    --add-opens=java.base/java.lang=ALL-UNNAMED<br>                <span class="hljs-tag">&lt;/<span class="hljs-name">jvmArguments</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span><br><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">argLine</span>&gt;</span><br>                    --add-opens=java.base/java.lang=ALL-UNNAMED<br>                    --add-opens=java.base/java.util=ALL-UNNAMED<br>                <span class="hljs-tag">&lt;/<span class="hljs-name">argLine</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>说明</strong>：<ul>
-<li><code>ed25519</code> 是更安全且推荐的新算法，如果系统不支持，可以用 <code>-t rsa -b 4096</code> 替代。</li>
-<li><code>-C</code> 后的内容可以是你的邮箱或任意标识符，仅用于标记。</li>
-</ul>
-</li>
-<li>按提示选择保存路径（默认按回车即可）和设置密码（可选）。</li>
-</ul>
-<h3 id="2-查看并复制公钥"><a href="#2-查看并复制公钥" class="headerlink" title="2. 查看并复制公钥"></a><strong>2. 查看并复制公钥</strong></h3><p>生成后，查看并复制公钥内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519.pub<br></code></pre></td></tr></table></figure>
+<h2 id="3、k8s配置问题"><a href="#3、k8s配置问题" class="headerlink" title="3、k8s配置问题"></a>3、k8s配置问题</h2><h3 id="声明变量到application"><a href="#声明变量到application" class="headerlink" title="声明变量到application"></a>声明变量到application</h3><p>读取backing service的时候，自定义的名字要替换到application.yml里面，记得在env里面声明。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">env</span>:<br>  SERVER.NAME: <span class="hljs-variable">$&#123;SERVER.NAME&#125;</span><br>  JAVA_OPTS: <span class="hljs-variable">$&#123;JAVA_OPTS&#125;</span><br>  SPRING_PROFILES_ACTIVE: <span class="hljs-variable">$&#123;profile&#125;</span><br></code></pre></td></tr></table></figure>
 
-<p>或手动用文本编辑器打开 <code>id_ed25519.pub</code> 文件，复制全部内容（以 <code>ssh-ed25519</code> 开头）。</p>
-<h3 id="3-将新公钥添加到-GitLab"><a href="#3-将新公钥添加到-GitLab" class="headerlink" title="3. 将新公钥添加到 GitLab"></a><strong>3. 将新公钥添加到 GitLab</strong></h3><ol>
-<li>登录 GitLab，点击右上角头像 → <strong>Preferences</strong> → <strong>SSH Keys</strong>。</li>
-<li>在 <strong>Key</strong> 文本框中粘贴复制的公钥内容。</li>
-<li>填写标题（如 <code>New Key 2025</code>），点击 <strong>Add key</strong>。</li>
-</ol>
-<h3 id="4-删除旧的-SSH-Key（可选）"><a href="#4-删除旧的-SSH-Key（可选）" class="headerlink" title="4. 删除旧的 SSH Key（可选）"></a><strong>4. 删除旧的 SSH Key（可选）</strong></h3><p>如果旧 Key 已不再使用，可以在同一页面找到旧 Key，点击 <strong>Revoke</strong> 移除。</p>
-<h3 id="5-测试-SSH-连接"><a href="#5-测试-SSH-连接" class="headerlink" title="5. 测试 SSH 连接"></a><strong>5. 测试 SSH 连接</strong></h3><p>在终端运行以下命令测试连接：</p>
-<p>bash</p>
-<p>复制</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> -T git<span class="hljs-variable">@gitlab</span>.com<br></code></pre></td></tr></table></figure>
 
-<ul>
-<li>如果看到 <code>Welcome to GitLab, @username!</code> 表示成功。</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20250306110026014.png" srcset="/img/loading.gif" lazyload alt="image-20250306110026014"></p>
-<p>完成后，你的 GitLab SSH 连接将使用新的 Key。试了下拉代码。没问题！</p>
+
+<h4 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h4><p>把初始化延迟检查调大点，以防pod反复重启</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">startup-probe</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">initial-check-delay</span><span class="hljs-punctuation">:</span> <span class="hljs-string">120</span><br>    <span class="hljs-attribute">retry-interval</span><span class="hljs-punctuation">:</span> <span class="hljs-string">10</span><br>    <span class="hljs-attribute">max-check-times</span><span class="hljs-punctuation">:</span> <span class="hljs-string">1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="4、springcloud-stream-引入rabbitmq"><a href="#4、springcloud-stream-引入rabbitmq" class="headerlink" title="4、springcloud-stream 引入rabbitmq"></a>4、springcloud-stream 引入rabbitmq</h3><p>起初只有solace这个消息队列，时代在发展，微服务准备接入rabbitmq，逐步抛弃solace。当前的阶段是两个同时用，然后就产生了2个binder问题</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">cloud:</span><br>  <span class="hljs-attr">stream:</span><br>    <span class="hljs-attr">function:</span><br>      <span class="hljs-attr">definition:</span> <span class="hljs-string">aaa;rabbitaaa</span><br>    <span class="hljs-attr">binders:</span><br>      <span class="hljs-attr">solace:</span><br>        <span class="hljs-attr">type:</span> <span class="hljs-string">solace</span><br>      <span class="hljs-attr">rabbit:</span><br>        <span class="hljs-attr">type:</span> <span class="hljs-string">rabbit</span><br>    <span class="hljs-attr">rabbit:</span><br>      <span class="hljs-attr">default:</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">rebalancerCompany:</span> <span class="hljs-string">$&#123;COMPANY&#125;</span><br>    <span class="hljs-attr">solace:</span><br>      <span class="hljs-attr">default:</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">autoCreateEndpoints:</span> <span class="hljs-literal">false</span><br>          <span class="hljs-attr">topicPatternCompany:</span> <span class="hljs-string">$&#123;SOLACE_CARRIER&#125;</span><br>          <span class="hljs-attr">topicPatternApp:</span> <span class="hljs-string">ECM</span><br>          <span class="hljs-attr">topicPatternComponent:</span> <span class="hljs-string">xxx_ACL</span><br>          <span class="hljs-attr">autoBindDmq:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">transportWindowSize:</span> <span class="hljs-number">50</span><br>    <span class="hljs-attr">bindings:</span><br>      <span class="hljs-attr">aaa-in-0:</span><br>        <span class="hljs-attr">binder:</span> <span class="hljs-string">solace</span><br>        <span class="hljs-attr">destination:</span> <span class="hljs-string">$&#123;SOLACE_CARRIER&#125;/xxx/DOCUMENT_DM_RESULT/ACL</span><br>        <span class="hljs-attr">contentType:</span> <span class="hljs-string">application/json</span><br>        <span class="hljs-attr">group:</span> <span class="hljs-string">xxx_acl</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">concurrency:</span> <span class="hljs-number">4</span><br>          <span class="hljs-attr">partitioned:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">max-attempts:</span> <span class="hljs-number">3</span><br>      <span class="hljs-attr">rabbitaaa-in-0:</span><br>        <span class="hljs-attr">binder:</span> <span class="hljs-string">rabbit</span><br>        <span class="hljs-attr">destination:</span> <span class="hljs-string">$&#123;RABBIT_CARRIER&#125;.xxx.DOCUMENT_DM_RESULT.ACL</span><br>        <span class="hljs-attr">contentType:</span> <span class="hljs-string">application/json</span><br>        <span class="hljs-attr">group:</span> <span class="hljs-string">XXX_ACL</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">partitioned:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">max-attempts:</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p>hexo 本地启动命令是什么： hexo s</p>
+<p>hexo清除缓存： hexo clean</p>
+<p>hexo本地build：hexo g</p>
+<p>hexo 远程推送： hexo d</p>
 
                 
               </div>
@@ -319,13 +310,6 @@
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="print-no-link">#工具使用</a>
-      
-    </div>
-  
 </div>
 
 
@@ -334,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Gitlab的SSHKEY过期如何刷新</div>
-      <div>https://liu-cj25.github.io/2025/03/06/Gitlab的SSHKEY过期如何刷新/</div>
+      <div></div>
+      <div>https://liu-cj25.github.io/2025/06/04/升级jdk17踩坑/</div>
     </div>
     <div class="license-meta">
       
@@ -347,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 6, 2025</div>
+          <div>June 4, 2025</div>
         </div>
       
       
@@ -379,18 +363,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/04/%E5%8D%87%E7%BA%A7jdk17%E8%B8%A9%E5%9D%91/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/06/%E6%98%A5%E7%A4%BE/" title="春社">
-                        <span class="hidden-mobile">春社</span>
+                      <a href="/2025/03/06/Gitlab%E7%9A%84SSHKEY%E8%BF%87%E6%9C%9F%E5%A6%82%E4%BD%95%E5%88%B7%E6%96%B0/" title="Gitlab的SSHKEY过期如何刷新">
+                        <span class="hidden-mobile">Gitlab的SSHKEY过期如何刷新</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
