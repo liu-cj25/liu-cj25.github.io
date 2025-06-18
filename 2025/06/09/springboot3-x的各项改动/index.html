@@ -27,7 +27,7 @@
 <meta property="og:description" content="升级springboot3.0问题时代的潮流，迫使不得不更新到boot3.x. 以下是做的一些改动 1、javax包改动问题在升级到 Spring Boot 3.x 后出现 javax.persistence.AttributeConverter 爆红的问题，是因为 Jakarta EE 9+ 已经将包名从 javax 迁移到了 jakarta。以下是解决方案： 原因Spring Boot 3.x">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-06-09T01:51:12.000Z">
-<meta property="article:modified_time" content="2025-06-18T07:05:39.006Z">
+<meta property="article:modified_time" content="2025-06-18T07:10:39.424Z">
 <meta property="article:author" content="cj">
 <meta property="article:tag" content="工具使用">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          431 words
+          441 words
         
       </span>
     
@@ -304,7 +304,13 @@
 
 <h2 id="3、检查并升级-Spring-Cloud-Sleuth-版本"><a href="#3、检查并升级-Spring-Cloud-Sleuth-版本" class="headerlink" title="3、检查并升级 Spring Cloud Sleuth 版本"></a>3、检查并升级 Spring Cloud Sleuth 版本</h2><p>因为 Spring Boot 3.x 对分布式追踪系统进行了重大重构，从 Spring Cloud Sleuth 迁移到了 Micrometer Tracing</p>
 <p>所以我们要引入pom的配置，还要在yml进行修改</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-string">``</span><span class="hljs-string">`</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">## 4、Spring Boot 3.x 中，`</span><span class="hljs-title class_">RestTemplate</span><span class="hljs-string">` 已不再是自动配置的 Bean，需要手动声明</span><br><span class="hljs-string"></span><br><span class="hljs-string">`</span><span class="hljs-string">``</span>java<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title class_">RestTemplate</span> <span class="hljs-title function_">restTemplate</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestTemplate</span>();<br>    &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">management:</span><br>  <span class="hljs-attr">tracing:</span><br>    <span class="hljs-attr">sampling:</span><br>      <span class="hljs-attr">probability:</span> <span class="hljs-number">1.0</span><br>    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">zipkin:</span><br>    <span class="hljs-attr">tracing:</span><br>      <span class="hljs-attr">endpoint:</span> <span class="hljs-string">$&#123;SPRING_ZIPKIN_BASEURL&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4、Spring-Boot-3-x-中，RestTemplate-已不再是自动配置的-Bean，需要手动声明"><a href="#4、Spring-Boot-3-x-中，RestTemplate-已不再是自动配置的-Bean，需要手动声明" class="headerlink" title="4、Spring Boot 3.x 中，RestTemplate 已不再是自动配置的 Bean，需要手动声明"></a>4、Spring Boot 3.x 中，<code>RestTemplate</code> 已不再是自动配置的 Bean，需要手动声明</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> RestTemplate <span class="hljs-title function_">restTemplate</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestTemplate</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
