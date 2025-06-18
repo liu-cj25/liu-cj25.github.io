@@ -19,22 +19,22 @@
   <meta name="author" content="cj">
   <meta name="keywords" content="">
   
-    <meta name="description" content="升级jdk17遇到的坑1、证书问题公司的base image是有证书版本的，没证书版本的，一开始没引用正确导致改了好多配置，忽略证书、替换证书无用功等等 2、jdk17可能会遇到反射等问题，要在pom里面加入配置12345678910111213141516171819202122232425262728293031323334&lt;build&gt;    &lt;plugins&gt;">
+    <meta name="description" content="升级springboot3.0问题时代的潮流，迫使不得不更新到boot3.x. 以下是做的一些改动 1、javax包改动问题在升级到 Spring Boot 3.x 后出现 javax.persistence.AttributeConverter 爆红的问题，是因为 Jakarta EE 9+ 已经将包名从 javax 迁移到了 jakarta。以下是解决方案： 原因Spring Boot 3.x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="升级jdk17遇到的坑">
-<meta property="og:url" content="https://liu-cj25.github.io/2025/06/04/%E5%8D%87%E7%BA%A7jdk17%E8%B8%A9%E5%9D%91/index.html">
+<meta property="og:title" content="springboot3.x的各项改动">
+<meta property="og:url" content="https://liu-cj25.github.io/2025/06/09/springboot3-x%E7%9A%84%E5%90%84%E9%A1%B9%E6%94%B9%E5%8A%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="升级jdk17遇到的坑1、证书问题公司的base image是有证书版本的，没证书版本的，一开始没引用正确导致改了好多配置，忽略证书、替换证书无用功等等 2、jdk17可能会遇到反射等问题，要在pom里面加入配置12345678910111213141516171819202122232425262728293031323334&lt;build&gt;    &lt;plugins&gt;">
+<meta property="og:description" content="升级springboot3.0问题时代的潮流，迫使不得不更新到boot3.x. 以下是做的一些改动 1、javax包改动问题在升级到 Spring Boot 3.x 后出现 javax.persistence.AttributeConverter 爆红的问题，是因为 Jakarta EE 9+ 已经将包名从 javax 迁移到了 jakarta。以下是解决方案： 原因Spring Boot 3.x">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-04T02:28:41.000Z">
-<meta property="article:modified_time" content="2025-06-04T08:43:44.964Z">
+<meta property="article:published_time" content="2025-06-09T01:51:12.000Z">
+<meta property="article:modified_time" content="2025-06-18T07:02:57.436Z">
 <meta property="article:author" content="cj">
 <meta property="article:tag" content="工具使用">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>升级jdk17遇到的坑 - Hexo</title>
+  <title>springboot3.x的各项改动 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="升级jdk17遇到的坑"></span>
+            <span id="subtitle" data-typed-text="springboot3.x的各项改动"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-04 10:28" pubdate>
-          June 4, 2025 am
+        <time datetime="2025-06-09 09:51" pubdate>
+          June 9, 2025 am
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          476 words
+          431 words
         
       </span>
     
@@ -271,37 +271,64 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">升级jdk17遇到的坑</h1>
+            <h1 id="seo-header">springboot3.x的各项改动</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="升级jdk17遇到的坑"><a href="#升级jdk17遇到的坑" class="headerlink" title="升级jdk17遇到的坑"></a>升级jdk17遇到的坑</h1><h2 id="1、证书问题"><a href="#1、证书问题" class="headerlink" title="1、证书问题"></a>1、证书问题</h2><p>公司的base image是有证书版本的，没证书版本的，一开始没引用正确导致改了好多配置，忽略证书、替换证书无用功等等</p>
-<h2 id="2、jdk17可能会遇到反射等问题，要在pom里面加入配置"><a href="#2、jdk17可能会遇到反射等问题，要在pom里面加入配置" class="headerlink" title="2、jdk17可能会遇到反射等问题，要在pom里面加入配置"></a>2、jdk17可能会遇到反射等问题，要在pom里面加入配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">jvmArguments</span>&gt;</span><br>                    --add-opens=java.base/java.util=ALL-UNNAMED<br>                    --add-opens=java.base/java.lang=ALL-UNNAMED<br>                <span class="hljs-tag">&lt;/<span class="hljs-name">jvmArguments</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span><br><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">argLine</span>&gt;</span><br>                    --add-opens=java.base/java.lang=ALL-UNNAMED<br>                    --add-opens=java.base/java.util=ALL-UNNAMED<br>                <span class="hljs-tag">&lt;/<span class="hljs-name">argLine</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="升级springboot3-0问题"><a href="#升级springboot3-0问题" class="headerlink" title="升级springboot3.0问题"></a>升级springboot3.0问题</h1><p>时代的潮流，迫使不得不更新到boot3.x. 以下是做的一些改动</p>
+<h2 id="1、javax包改动问题"><a href="#1、javax包改动问题" class="headerlink" title="1、javax包改动问题"></a>1、javax包改动问题</h2><p>在升级到 Spring Boot 3.x 后出现 <code>javax.persistence.AttributeConverter</code> 爆红的问题，是因为 Jakarta EE 9+ 已经将包名从 <code>javax</code> 迁移到了 <code>jakarta</code>。以下是解决方案：</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>Spring Boot 3.x 基于 Spring Framework 6 和 Jakarta EE 9+，后者已将 <code>javax.persistence</code> 等包名统一改为 <code>jakarta.persistence</code>。</p>
+<p>将：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javax.persistence.AttributeConverter;<br></code></pre></td></tr></table></figure>
 
-<h2 id="3、k8s配置问题"><a href="#3、k8s配置问题" class="headerlink" title="3、k8s配置问题"></a>3、k8s配置问题</h2><h3 id="声明变量到application"><a href="#声明变量到application" class="headerlink" title="声明变量到application"></a>声明变量到application</h3><p>读取backing service的时候，自定义的名字要替换到application.yml里面，记得在env里面声明。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">env</span>:<br>  SERVER.NAME: <span class="hljs-variable">$&#123;SERVER.NAME&#125;</span><br>  JAVA_OPTS: <span class="hljs-variable">$&#123;JAVA_OPTS&#125;</span><br>  SPRING_PROFILES_ACTIVE: <span class="hljs-variable">$&#123;profile&#125;</span><br></code></pre></td></tr></table></figure>
+<p>改成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> jakarta.persistence.AttributeConverter;<br></code></pre></td></tr></table></figure>
 
+<p>更新maven依赖</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;dependency&gt;<br>    &lt;groupId&gt;jakarta.persistence&lt;/groupId&gt;<br>    &lt;artifactId&gt;jakarta.persistence-api&lt;/artifactId&gt;<br>    &lt;version&gt;<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>&lt;/version&gt; &lt;!-- 使用最新稳定版 --&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
 
-
-<h4 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h4><p>把初始化延迟检查调大点，以防pod反复重启</p>
-<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">startup-probe</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-attribute">initial-check-delay</span><span class="hljs-punctuation">:</span> <span class="hljs-string">120</span><br>    <span class="hljs-attribute">retry-interval</span><span class="hljs-punctuation">:</span> <span class="hljs-string">10</span><br>    <span class="hljs-attribute">max-check-times</span><span class="hljs-punctuation">:</span> <span class="hljs-string">1</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="4、springcloud-stream-引入rabbitmq"><a href="#4、springcloud-stream-引入rabbitmq" class="headerlink" title="4、springcloud-stream 引入rabbitmq"></a>4、springcloud-stream 引入rabbitmq</h3><p>起初只有solace这个消息队列，时代在发展，微服务准备接入rabbitmq，逐步抛弃solace。当前的阶段是两个同时用，然后就产生了2个binder问题</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">cloud:</span><br>  <span class="hljs-attr">stream:</span><br>    <span class="hljs-attr">function:</span><br>      <span class="hljs-attr">definition:</span> <span class="hljs-string">aaa;rabbitaaa</span><br>    <span class="hljs-attr">binders:</span><br>      <span class="hljs-attr">solace:</span><br>        <span class="hljs-attr">type:</span> <span class="hljs-string">solace</span><br>      <span class="hljs-attr">rabbit:</span><br>        <span class="hljs-attr">type:</span> <span class="hljs-string">rabbit</span><br>    <span class="hljs-attr">rabbit:</span><br>      <span class="hljs-attr">default:</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">rebalancerCompany:</span> <span class="hljs-string">$&#123;COMPANY&#125;</span><br>    <span class="hljs-attr">solace:</span><br>      <span class="hljs-attr">default:</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">autoCreateEndpoints:</span> <span class="hljs-literal">false</span><br>          <span class="hljs-attr">topicPatternCompany:</span> <span class="hljs-string">$&#123;SOLACE_CARRIER&#125;</span><br>          <span class="hljs-attr">topicPatternApp:</span> <span class="hljs-string">ECM</span><br>          <span class="hljs-attr">topicPatternComponent:</span> <span class="hljs-string">xxx_ACL</span><br>          <span class="hljs-attr">autoBindDmq:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">transportWindowSize:</span> <span class="hljs-number">50</span><br>    <span class="hljs-attr">bindings:</span><br>      <span class="hljs-attr">aaa-in-0:</span><br>        <span class="hljs-attr">binder:</span> <span class="hljs-string">solace</span><br>        <span class="hljs-attr">destination:</span> <span class="hljs-string">$&#123;SOLACE_CARRIER&#125;/xxx/DOCUMENT_DM_RESULT/ACL</span><br>        <span class="hljs-attr">contentType:</span> <span class="hljs-string">application/json</span><br>        <span class="hljs-attr">group:</span> <span class="hljs-string">xxx_acl</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">concurrency:</span> <span class="hljs-number">4</span><br>          <span class="hljs-attr">partitioned:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">max-attempts:</span> <span class="hljs-number">3</span><br>      <span class="hljs-attr">rabbitaaa-in-0:</span><br>        <span class="hljs-attr">binder:</span> <span class="hljs-string">rabbit</span><br>        <span class="hljs-attr">destination:</span> <span class="hljs-string">$&#123;RABBIT_CARRIER&#125;.xxx.DOCUMENT_DM_RESULT.ACL</span><br>        <span class="hljs-attr">contentType:</span> <span class="hljs-string">application/json</span><br>        <span class="hljs-attr">group:</span> <span class="hljs-string">XXX_ACL</span><br>        <span class="hljs-attr">consumer:</span><br>          <span class="hljs-attr">partitioned:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">max-attempts:</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xl"><span class="hljs-function"><span class="hljs-title">import</span> javax.validation.constraints.NotNull;   ---&gt;</span>  <span class="hljs-keyword">import</span> jakarta.validation.constraints.NotNull;<br><span class="hljs-function"><span class="hljs-title">javax</span>.annotation.PostConstruct                 ---&gt;</span>  jakarta.annotation.PostConstruct<br><span class="hljs-function"><span class="hljs-title">import</span> javax.servlet.http.HttpServletRequest;  ---&gt;</span>  <span class="hljs-keyword">import</span> jakarta.servlet.http.HttpServletRequest;<br></code></pre></td></tr></table></figure>
 
 
 
 
 
+<h2 id="2、JwtIssuerAuthenticationManagerResolver"><a href="#2、JwtIssuerAuthenticationManagerResolver" class="headerlink" title="2、JwtIssuerAuthenticationManagerResolver"></a>2、JwtIssuerAuthenticationManagerResolver</h2><p>旧写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.security.oauth2.jwt.JwtIssuerAuthenticationManagerResolver;<br>JwtIssuerAuthenticationManagerResolver authenticationManagerResolver=<span class="hljs-keyword">new</span> <span class="hljs-title class_">JwtIssuerAuthenticationManagerResolver</span>(issuersList);<br></code></pre></td></tr></table></figure>
+
+<p>新写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.security.oauth2.server.resource.authentication.JwtIssuerAuthenticationManagerResolver;<br><span class="hljs-type">JwtIssuerAuthenticationManagerResolver</span> <span class="hljs-variable">resolver</span> <span class="hljs-operator">=</span> JwtIssuerAuthenticationManagerResolver.fromTrustedIssuers(issuersList);<br></code></pre></td></tr></table></figure>
 
 
-<p>hexo 本地启动命令是什么： hexo s</p>
-<p>hexo清除缓存： hexo clean</p>
-<p>hexo本地build：hexo g</p>
-<p>hexo 远程推送： hexo d</p>
+
+<h2 id="3、检查并升级-Spring-Cloud-Sleuth-版本"><a href="#3、检查并升级-Spring-Cloud-Sleuth-版本" class="headerlink" title="3、检查并升级 Spring Cloud Sleuth 版本"></a>3、检查并升级 Spring Cloud Sleuth 版本</h2><p>因为 Spring Boot 3.x 对分布式追踪系统进行了重大重构，从 Spring Cloud Sleuth 迁移到了 Micrometer Tracing</p>
+<p>所以我们要引入pom的配置，还要在yml进行修改</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-string">``</span><span class="hljs-string">`</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">## 4、Spring Boot 3.x 中，`</span><span class="hljs-title class_">RestTemplate</span><span class="hljs-string">` 已不再是自动配置的 Bean，需要手动声明</span><br><span class="hljs-string"></span><br><span class="hljs-string">`</span><span class="hljs-string">``</span>java<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title class_">RestTemplate</span> <span class="hljs-title function_">restTemplate</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestTemplate</span>();<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5、tomcat版本要10以上"><a href="#5、tomcat版本要10以上" class="headerlink" title="5、tomcat版本要10以上"></a>5、tomcat版本要10以上</h2><p>目前我用的是10.1.42版本</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-section">&lt;tomcat.version&gt;</span><span class="hljs-attribute">10</span>.<span class="hljs-number">1</span>.<span class="hljs-number">42</span>&lt;/tomcat.version&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="6、application配置的层级问题"><a href="#6、application配置的层级问题" class="headerlink" title="6、application配置的层级问题"></a>6、application配置的层级问题</h2><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">cloud:</span><br><span class="hljs-symbol">  stream:</span><br><span class="hljs-symbol">    function:</span><br><span class="hljs-symbol">      definition:</span> receiveAuditLogE<span class="hljs-attr">vent</span><span class="hljs-punctuation">;</span>rabbitReceiveAuditLogEvent<br></code></pre></td></tr></table></figure>
+
+<p>修改成：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">cloud:</span><br><span class="hljs-symbol">  function:</span><br><span class="hljs-symbol">    definition:</span> receiveAuditLogE<span class="hljs-attr">vent</span><span class="hljs-punctuation">;</span>rabbitReceiveAuditLogEvent<br><span class="hljs-symbol">  stream:</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="7、Hibernate"><a href="#7、Hibernate" class="headerlink" title="7、Hibernate"></a>7、<strong>Hibernate</strong></h2><ol>
+<li><strong>Hibernate 6 的破坏性变更</strong><ul>
+<li>Hibernate 5.x 的 <code>@Type(type = &quot;yes_no&quot;)</code> 用于将 <code>Boolean</code> 类型映射到数据库的 <code>CHAR(1)</code>（<code>&#39;Y&#39;/&#39;N&#39;</code>）。</li>
+<li><strong>Hibernate 6.x 移除了 <code>@Type</code> 的简单用法</strong>，改为更明确的类型系统（需要配合 <code>@JdbcType</code> 或 <code>@JavaType</code>）。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.hibernate.annotations.JdbcType;<br><span class="hljs-keyword">import</span> org.hibernate.type.descriptor.jdbc.CharJdbcType;<br><br><span class="hljs-meta">@Column(name = &quot;is_active&quot;)</span><br><span class="hljs-meta">@JdbcType(CharJdbcType.class)</span>  <span class="hljs-comment">// 指定数据库存储为 CHAR</span><br><span class="hljs-keyword">private</span> Boolean isActive;       <span class="hljs-comment">// 自动映射为 &#x27;Y&#x27;/&#x27;N&#x27;</span><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -326,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>升级jdk17遇到的坑</div>
-      <div>https://liu-cj25.github.io/2025/06/04/升级jdk17踩坑/</div>
+      <div>springboot3.x的各项改动</div>
+      <div>https://liu-cj25.github.io/2025/06/09/springboot3-x的各项改动/</div>
     </div>
     <div class="license-meta">
       
@@ -339,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>June 4, 2025</div>
+          <div>June 9, 2025</div>
         </div>
       
       
@@ -371,18 +398,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/06/springboot%E5%8D%87%E7%BA%A7%E5%88%B03-x%E7%89%88%E6%9C%AC-md/" title="springboot升级到3.x版本.md">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">springboot升级到3.x版本.md</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/06/Gitlab%E7%9A%84SSHKEY%E8%BF%87%E6%9C%9F%E5%A6%82%E4%BD%95%E5%88%B7%E6%96%B0/" title="Gitlab的SSHKEY过期如何刷新">
-                        <span class="hidden-mobile">Gitlab的SSHKEY过期如何刷新</span>
+                      <a href="/2025/06/06/springboot%E5%8D%87%E7%BA%A7%E5%88%B03-x%E7%89%88%E6%9C%AC-md/" title="springboot升级到3.x版本.md">
+                        <span class="hidden-mobile">springboot升级到3.x版本.md</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
