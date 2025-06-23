@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20250606165228894.png">
 <meta property="article:published_time" content="2025-06-06T08:12:10.000Z">
-<meta property="article:modified_time" content="2025-06-18T07:05:55.814Z">
+<meta property="article:modified_time" content="2025-06-23T09:20:26.667Z">
 <meta property="article:author" content="cj">
 <meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          723 words
+          1.2k words
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          7 mins
+          11 mins
         
       </span>
     
@@ -327,6 +327,68 @@
 <li>或者使用 <code>@PostConstruct</code> 初始化字段</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/liu-cj25/lcjImg@master/img/image-20250606165228894.png" srcset="/img/loading.gif" lazyload alt="image-20250606165228894"></p>
+<h4 id="6、路径问题"><a href="#6、路径问题" class="headerlink" title="6、路径问题"></a>6、路径问题</h4><p>在 Spring Boot 3.4.1 中，如果 URL 末尾加 <code>/</code> 导致 <code>No static resource</code> 错误，通常是因为 <strong>静态资源处理规则</strong> 或 <strong>路径匹配策略</strong> 发生了变化。以下是解决方案：</p>
+<ol>
+<li><strong>Spring Boot 3.x 默认路径匹配行为调整</strong><ul>
+<li>旧版（如 2.x）会自动处理 <code>/path</code> 和 <code>/path/</code> 为相同路径。</li>
+<li><strong>Spring Boot 3.x 更严格</strong>，<code>/path</code> 和 <code>/path/</code> 可能被视为不同路由。</li>
+</ul>
+</li>
+<li><strong>静态资源映射规则</strong><ul>
+<li>如果请求的路径被误判为静态资源请求（如 <code>api/frm/ecm/documents/</code>），但实际是动态接口，Spring 会尝试查找静态文件，导致 <code>No static resource</code> 错误。</li>
+</ul>
+</li>
+</ol>
+<h4 id="调整路径匹配策略"><a href="#调整路径匹配策略" class="headerlink" title="调整路径匹配策略"></a><strong>调整路径匹配策略</strong></h4><p>如果路径影响不多，可以直接</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,value = &#123;<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;/&quot;</span>&#125;)</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>如果路径很多的话，建议加个filter类去处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.fwk.ecm.documentprocessor.config;<br><br><span class="hljs-keyword">import</span> jakarta.servlet.*;<br><span class="hljs-keyword">import</span> jakarta.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> jakarta.servlet.http.HttpServletRequestWrapper;<br><span class="hljs-keyword">import</span> jakarta.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> org.springframework.boot.web.servlet.FilterRegistrationBean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UrlNormalizationConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> FilterRegistrationBean&lt;UrlNormalizationFilter&gt; <span class="hljs-title function_">urlNormalizationFilter</span><span class="hljs-params">()</span> &#123;<br>        FilterRegistrationBean&lt;UrlNormalizationFilter&gt; registration = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FilterRegistrationBean</span>&lt;&gt;();<br>        registration.setFilter(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UrlNormalizationFilter</span>());<br>        registration.addUrlPatterns(<span class="hljs-string">&quot;/api/*&quot;</span>);<br>        <span class="hljs-keyword">return</span> registration;<br>    &#125;<br><br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UrlNormalizationFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Filter</span> &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doFilter</span><span class="hljs-params">(ServletRequest req, ServletResponse res, FilterChain chain)</span><br>                <span class="hljs-keyword">throws</span> IOException, ServletException &#123;<br>            <span class="hljs-type">HttpServletRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> (HttpServletRequest) req;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">path</span> <span class="hljs-operator">=</span> request.getRequestURI();<br>            <span class="hljs-type">String</span> <span class="hljs-variable">query</span> <span class="hljs-operator">=</span> request.getQueryString();<br><br><br>            <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;GET&quot;</span>.equalsIgnoreCase(request.getMethod()) &amp;&amp; shouldNormalize(path)) &#123;<br>                <span class="hljs-type">String</span> <span class="hljs-variable">normalizedPath</span> <span class="hljs-operator">=</span> path.replaceAll(<span class="hljs-string">&quot;/+$&quot;</span>, <span class="hljs-string">&quot;&quot;</span>) + (query != <span class="hljs-literal">null</span> ? <span class="hljs-string">&quot;?&quot;</span> + query : <span class="hljs-string">&quot;&quot;</span>);<br>                ((HttpServletResponse) res).sendRedirect(normalizedPath);<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span> (shouldNormalize(path)) &#123;<br>                <span class="hljs-type">String</span> <span class="hljs-variable">normalizedPath</span> <span class="hljs-operator">=</span> path.replaceAll(<span class="hljs-string">&quot;/+$&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br>                req = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomHttpServletRequestWrapper</span>((HttpServletRequest) req, normalizedPath);<br>            &#125;<br>            chain.doFilter(req, res);<br>        &#125;<br><br>        <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">shouldNormalize</span><span class="hljs-params">(String path)</span> &#123;<br>            <span class="hljs-keyword">return</span> path.matches(<span class="hljs-string">&quot;/api/.+/&quot;</span>) &amp;&amp; <br>                   !path.startsWith(<span class="hljs-string">&quot;/actuator/&quot;</span>) &amp;&amp; <br>                   !path.contains(<span class="hljs-string">&quot;.&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomHttpServletRequestWrapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HttpServletRequestWrapper</span> &#123;<br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String newPath;<br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">CustomHttpServletRequestWrapper</span><span class="hljs-params">(HttpServletRequest request, String newPath)</span> &#123;<br>            <span class="hljs-built_in">super</span>(request);<br>            <span class="hljs-built_in">this</span>.newPath = newPath;<br>        &#125;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getRequestURI</span><span class="hljs-params">()</span> &#123;<br>            <span class="hljs-keyword">return</span> newPath;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="7、boot、cloud版本匹配"><a href="#7、boot、cloud版本匹配" class="headerlink" title="7、boot、cloud版本匹配"></a>7、boot、cloud版本匹配</h4><p>官方参考链接</p>
+<ol>
+<li><strong>Spring Cloud 官方版本说明</strong><br>📌 <a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud#learn">Spring Cloud Release Train</a><br>（查看最新版本与 Spring Boot 兼容性）</li>
+<li><strong>Spring Boot 官方文档</strong><br>📌 <a target="_blank" rel="noopener" href="https://spring.io/projects/spring-boot#support">Spring Boot Version Support</a><br>（LTS 版本与维护周期）</li>
+<li><strong>Spring Initializr（自动匹配版本）</strong><br>🛠 <a target="_blank" rel="noopener" href="https://start.spring.io/">start.spring.io</a><br>（创建项目时自动选择兼容版本）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Spring Cloud 版本</th>
+<th>Spring Boot 版本</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>2025.0.x</strong></td>
+<td>3.5.x</td>
+<td>Northfields</td>
+</tr>
+<tr>
+<td><strong>2024.0.x</strong></td>
+<td>3.4.x</td>
+<td>Moorgate</td>
+</tr>
+<tr>
+<td><strong>2023.0.x</strong></td>
+<td>3.2.x ~ 3.3.x</td>
+<td>Leyton</td>
+</tr>
+<tr>
+<td><strong>2022.0.x</strong></td>
+<td>3.0.x ~ 3.1.x</td>
+<td>Kilburn</td>
+</tr>
+</tbody></table>
+<p><strong>推荐组合（生产环境）</strong>：</p>
+<ul>
+<li><strong>Spring Boot 3.4.x</strong> + <strong>Spring Cloud 2024.0.x</strong></li>
+<li><strong>Spring Boot 3.2.x</strong> + <strong>Spring Cloud 2023.0.x</strong>（长期支持）</li>
+</ul>
 
                 
               </div>
