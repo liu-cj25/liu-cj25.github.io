@@ -19,22 +19,22 @@
   <meta name="author" content="cj">
   <meta name="keywords" content="">
   
-    <meta name="description" content="升级springboot3.0问题时代的潮流，迫使不得不更新到boot3.x. 以下是做的一些改动 1、javax包改动问题在升级到 Spring Boot 3.x 后出现 javax.persistence.AttributeConverter 爆红的问题，是因为 Jakarta EE 9+ 已经将包名从 javax 迁移到了 jakarta。以下是解决方案： 原因Spring Boot 3.x">
+    <meta name="description" content="配置新环境最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合 云服务升级M2+服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springboot3.x的各项改动">
-<meta property="og:url" content="https://liu-cj25.github.io/2025/06/09/springboot3-x%E7%9A%84%E5%90%84%E9%A1%B9%E6%94%B9%E5%8A%A8/index.html">
+<meta property="og:title" content="设置新的云环境">
+<meta property="og:url" content="https://liu-cj25.github.io/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="升级springboot3.0问题时代的潮流，迫使不得不更新到boot3.x. 以下是做的一些改动 1、javax包改动问题在升级到 Spring Boot 3.x 后出现 javax.persistence.AttributeConverter 爆红的问题，是因为 Jakarta EE 9+ 已经将包名从 javax 迁移到了 jakarta。以下是解决方案： 原因Spring Boot 3.x">
+<meta property="og:description" content="配置新环境最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合 云服务升级M2+服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-09T01:51:12.000Z">
-<meta property="article:modified_time" content="2025-06-18T07:10:39.424Z">
+<meta property="article:published_time" content="2025-07-17T08:11:23.000Z">
+<meta property="article:modified_time" content="2025-07-17T08:41:11.978Z">
 <meta property="article:author" content="cj">
-<meta property="article:tag" content="工具使用">
+<meta property="article:tag" content="springCloud">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>springboot3.x的各项改动 - Hexo</title>
+  <title>设置新的云环境 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="springboot3.x的各项改动"></span>
+            <span id="subtitle" data-typed-text="设置新的云环境"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-09 09:51" pubdate>
-          June 9, 2025 am
+        <time datetime="2025-07-17 16:11" pubdate>
+          July 17, 2025 pm
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          441 words
+          539 words
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          4 mins
+          5 mins
         
       </span>
     
@@ -271,70 +271,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">springboot3.x的各项改动</h1>
+            <h1 id="seo-header">设置新的云环境</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="升级springboot3-0问题"><a href="#升级springboot3-0问题" class="headerlink" title="升级springboot3.0问题"></a>升级springboot3.0问题</h1><p>时代的潮流，迫使不得不更新到boot3.x. 以下是做的一些改动</p>
-<h2 id="1、javax包改动问题"><a href="#1、javax包改动问题" class="headerlink" title="1、javax包改动问题"></a>1、javax包改动问题</h2><p>在升级到 Spring Boot 3.x 后出现 <code>javax.persistence.AttributeConverter</code> 爆红的问题，是因为 Jakarta EE 9+ 已经将包名从 <code>javax</code> 迁移到了 <code>jakarta</code>。以下是解决方案：</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>Spring Boot 3.x 基于 Spring Framework 6 和 Jakarta EE 9+，后者已将 <code>javax.persistence</code> 等包名统一改为 <code>jakarta.persistence</code>。</p>
-<p>将：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javax.persistence.AttributeConverter;<br></code></pre></td></tr></table></figure>
-
-<p>改成</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> jakarta.persistence.AttributeConverter;<br></code></pre></td></tr></table></figure>
-
-<p>更新maven依赖</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;dependency&gt;<br>    &lt;groupId&gt;jakarta.persistence&lt;/groupId&gt;<br>    &lt;artifactId&gt;jakarta.persistence-api&lt;/artifactId&gt;<br>    &lt;version&gt;<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>&lt;/version&gt; &lt;!-- 使用最新稳定版 --&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xl"><span class="hljs-function"><span class="hljs-title">import</span> javax.validation.constraints.NotNull;   ---&gt;</span>  <span class="hljs-keyword">import</span> jakarta.validation.constraints.NotNull;<br><span class="hljs-function"><span class="hljs-title">javax</span>.annotation.PostConstruct                 ---&gt;</span>  jakarta.annotation.PostConstruct<br><span class="hljs-function"><span class="hljs-title">import</span> javax.servlet.http.HttpServletRequest;  ---&gt;</span>  <span class="hljs-keyword">import</span> jakarta.servlet.http.HttpServletRequest;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="2、JwtIssuerAuthenticationManagerResolver"><a href="#2、JwtIssuerAuthenticationManagerResolver" class="headerlink" title="2、JwtIssuerAuthenticationManagerResolver"></a>2、JwtIssuerAuthenticationManagerResolver</h2><p>旧写法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.security.oauth2.jwt.JwtIssuerAuthenticationManagerResolver;<br>JwtIssuerAuthenticationManagerResolver authenticationManagerResolver=<span class="hljs-keyword">new</span> <span class="hljs-title class_">JwtIssuerAuthenticationManagerResolver</span>(issuersList);<br></code></pre></td></tr></table></figure>
-
-<p>新写法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.security.oauth2.server.resource.authentication.JwtIssuerAuthenticationManagerResolver;<br><span class="hljs-type">JwtIssuerAuthenticationManagerResolver</span> <span class="hljs-variable">resolver</span> <span class="hljs-operator">=</span> JwtIssuerAuthenticationManagerResolver.fromTrustedIssuers(issuersList);<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="3、检查并升级-Spring-Cloud-Sleuth-版本"><a href="#3、检查并升级-Spring-Cloud-Sleuth-版本" class="headerlink" title="3、检查并升级 Spring Cloud Sleuth 版本"></a>3、检查并升级 Spring Cloud Sleuth 版本</h2><p>因为 Spring Boot 3.x 对分布式追踪系统进行了重大重构，从 Spring Cloud Sleuth 迁移到了 Micrometer Tracing</p>
-<p>所以我们要引入pom的配置，还要在yml进行修改</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">management:</span><br>  <span class="hljs-attr">tracing:</span><br>    <span class="hljs-attr">sampling:</span><br>      <span class="hljs-attr">probability:</span> <span class="hljs-number">1.0</span><br>    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">zipkin:</span><br>    <span class="hljs-attr">tracing:</span><br>      <span class="hljs-attr">endpoint:</span> <span class="hljs-string">$&#123;SPRING_ZIPKIN_BASEURL&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="4、Spring-Boot-3-x-中，RestTemplate-已不再是自动配置的-Bean，需要手动声明"><a href="#4、Spring-Boot-3-x-中，RestTemplate-已不再是自动配置的-Bean，需要手动声明" class="headerlink" title="4、Spring Boot 3.x 中，RestTemplate 已不再是自动配置的 Bean，需要手动声明"></a>4、Spring Boot 3.x 中，<code>RestTemplate</code> 已不再是自动配置的 Bean，需要手动声明</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> RestTemplate <span class="hljs-title function_">restTemplate</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestTemplate</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="5、tomcat版本要10以上"><a href="#5、tomcat版本要10以上" class="headerlink" title="5、tomcat版本要10以上"></a>5、tomcat版本要10以上</h2><p>目前我用的是10.1.42版本</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-section">&lt;tomcat.version&gt;</span><span class="hljs-attribute">10</span>.<span class="hljs-number">1</span>.<span class="hljs-number">42</span>&lt;/tomcat.version&gt;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="6、application配置的层级问题"><a href="#6、application配置的层级问题" class="headerlink" title="6、application配置的层级问题"></a>6、application配置的层级问题</h2><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">cloud:</span><br><span class="hljs-symbol">  stream:</span><br><span class="hljs-symbol">    function:</span><br><span class="hljs-symbol">      definition:</span> receiveAuditLogE<span class="hljs-attr">vent</span><span class="hljs-punctuation">;</span>rabbitReceiveAuditLogEvent<br></code></pre></td></tr></table></figure>
-
-<p>修改成：</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">cloud:</span><br><span class="hljs-symbol">  function:</span><br><span class="hljs-symbol">    definition:</span> receiveAuditLogE<span class="hljs-attr">vent</span><span class="hljs-punctuation">;</span>rabbitReceiveAuditLogEvent<br><span class="hljs-symbol">  stream:</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="7、Hibernate"><a href="#7、Hibernate" class="headerlink" title="7、Hibernate"></a>7、<strong>Hibernate</strong></h2><ol>
-<li><strong>Hibernate 6 的破坏性变更</strong><ul>
-<li>Hibernate 5.x 的 <code>@Type(type = &quot;yes_no&quot;)</code> 用于将 <code>Boolean</code> 类型映射到数据库的 <code>CHAR(1)</code>（<code>&#39;Y&#39;/&#39;N&#39;</code>）。</li>
-<li><strong>Hibernate 6.x 移除了 <code>@Type</code> 的简单用法</strong>，改为更明确的类型系统（需要配合 <code>@JdbcType</code> 或 <code>@JavaType</code>）。</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.hibernate.annotations.JdbcType;<br><span class="hljs-keyword">import</span> org.hibernate.type.descriptor.jdbc.CharJdbcType;<br><br><span class="hljs-meta">@Column(name = &quot;is_active&quot;)</span><br><span class="hljs-meta">@JdbcType(CharJdbcType.class)</span>  <span class="hljs-comment">// 指定数据库存储为 CHAR</span><br><span class="hljs-keyword">private</span> Boolean isActive;       <span class="hljs-comment">// 自动映射为 &#x27;Y&#x27;/&#x27;N&#x27;</span><br></code></pre></td></tr></table></figure>
-
+                <h1 id="配置新环境"><a href="#配置新环境" class="headerlink" title="配置新环境"></a>配置新环境</h1><p>最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合</p>
+<h2 id="云服务升级M2"><a href="#云服务升级M2" class="headerlink" title="云服务升级M2+"></a>云服务升级M2+</h2><p>服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常，也会有人打电话关心你，叫你上去看。其实三月份的时候就已经弄好了，但是一些审批人不回消息等等才一直推迟。最近还引入了micrometer的监控，可以看到db、请求数量、请求的处理时间的图表监控。</p>
+<h2 id="地下服务迁云"><a href="#地下服务迁云" class="headerlink" title="地下服务迁云"></a>地下服务迁云</h2><p>地下的服务变成一个空壳子代理，请求直接打到天上的服务。好处是m1的服务不用停掉，也不用迁移，m2的服务要返回一模一样的数据，再通过m1返回去。当然新接入的建议直接接入m2了。唯一要处理的就是旧数据的迁移，要等所有的app都接入到天上的服务，才能开始迁移旧数据。</p>
+<p>搬迁这个跟以前不一样的一点就是，新建立了一个switch表，如果user在这个表，就直接连到天上去，如果user不在这个表，就连的是地下的那一套。这个分批迁移是一个很好的思路，避免了大批量的app同一时间遇到大问题。这个分批的思路，还是比较好的。</p>
+<h2 id="配置新的cloud环境"><a href="#配置新的cloud环境" class="headerlink" title="配置新的cloud环境"></a>配置新的cloud环境</h2><p>新的could环境要申请，申请下来后开防火墙，创建新的服务，各种配置，主要就是跟Home Supp的人沟通，费时间沟通。现在环境已经好了，坐等的就是app的全面搬迁上云。</p>
+<p>地下的链接指向cloud的地址，就可以连接成M1—&gt;M2—&gt;M1的反馈了</p>
 
                 
               </div>
@@ -368,7 +315,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="print-no-link">#工具使用</a>
+        <a href="/tags/springCloud/" class="print-no-link">#springCloud</a>
       
     </div>
   
@@ -380,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>springboot3.x的各项改动</div>
-      <div>https://liu-cj25.github.io/2025/06/09/springboot3-x的各项改动/</div>
+      <div>设置新的云环境</div>
+      <div>https://liu-cj25.github.io/2025/07/17/设置新的云环境/</div>
     </div>
     <div class="license-meta">
       
@@ -393,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>June 9, 2025</div>
+          <div>July 17, 2025</div>
         </div>
       
       
@@ -425,18 +372,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/" title="设置新的云环境">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">设置新的云环境</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/06/springboot%E5%8D%87%E7%BA%A7%E5%88%B03-x%E7%89%88%E6%9C%AC-md/" title="springboot升级到3.x版本.md">
-                        <span class="hidden-mobile">springboot升级到3.x版本.md</span>
+                      <a href="/2025/06/09/springboot3-x%E7%9A%84%E5%90%84%E9%A1%B9%E6%94%B9%E5%8A%A8/" title="springboot3.x的各项改动">
+                        <span class="hidden-mobile">springboot3.x的各项改动</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

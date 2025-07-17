@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>设置新的云环境</title>
+    <link href="/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/"/>
+    <url>/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/</url>
+    
+    <content type="html"><![CDATA[<h1 id="配置新环境"><a href="#配置新环境" class="headerlink" title="配置新环境"></a>配置新环境</h1><p>最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合</p><h2 id="云服务升级M2"><a href="#云服务升级M2" class="headerlink" title="云服务升级M2+"></a>云服务升级M2+</h2><p>服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常，也会有人打电话关心你，叫你上去看。其实三月份的时候就已经弄好了，但是一些审批人不回消息等等才一直推迟。最近还引入了micrometer的监控，可以看到db、请求数量、请求的处理时间的图表监控。</p><h2 id="地下服务迁云"><a href="#地下服务迁云" class="headerlink" title="地下服务迁云"></a>地下服务迁云</h2><p>地下的服务变成一个空壳子代理，请求直接打到天上的服务。好处是m1的服务不用停掉，也不用迁移，m2的服务要返回一模一样的数据，再通过m1返回去。当然新接入的建议直接接入m2了。唯一要处理的就是旧数据的迁移，要等所有的app都接入到天上的服务，才能开始迁移旧数据。</p><p>搬迁这个跟以前不一样的一点就是，新建立了一个switch表，如果user在这个表，就直接连到天上去，如果user不在这个表，就连的是地下的那一套。这个分批迁移是一个很好的思路，避免了大批量的app同一时间遇到大问题。这个分批的思路，还是比较好的。</p><h2 id="配置新的cloud环境"><a href="#配置新的cloud环境" class="headerlink" title="配置新的cloud环境"></a>配置新的cloud环境</h2><p>新的could环境要申请，申请下来后开防火墙，创建新的服务，各种配置，主要就是跟Home Supp的人沟通，费时间沟通。现在环境已经好了，坐等的就是app的全面搬迁上云。</p><p>地下的链接指向cloud的地址，就可以连接成M1—&gt;M2—&gt;M1的反馈了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工作</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>springCloud</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>springboot3.x的各项改动</title>
     <link href="/2025/06/09/springboot3-x%E7%9A%84%E5%90%84%E9%A1%B9%E6%94%B9%E5%8A%A8/"/>
     <url>/2025/06/09/springboot3-x%E7%9A%84%E5%90%84%E9%A1%B9%E6%94%B9%E5%8A%A8/</url>
