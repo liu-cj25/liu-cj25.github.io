@@ -19,22 +19,22 @@
   <meta name="author" content="cj">
   <meta name="keywords" content="">
   
-    <meta name="description" content="配置新环境最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合 云服务升级M2+服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常">
+    <meta name="description" content="Spring Aop好久没碰Aop，最近有个需求，类似收集请求参数的，记录下来做个简单的记录。 大致可以理解成： 有一些方法的请求参数记录下来 有些参数在返回参数记录 异常信息也要记录 获取请求参数然后我就想到，项目中的JWTHandlerInterceptor这个类里面有进行了jwt的解析，可以通过解析出来，放进HttpServletRequest里面，这样通过GetAttribute就可以拿到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设置新的云环境">
-<meta property="og:url" content="https://liu-cj25.github.io/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:title" content="SpringAop做一些增强">
+<meta property="og:url" content="https://liu-cj25.github.io/2025/08/14/SpringAop%E5%81%9A%E4%B8%80%E4%BA%9B%E5%A2%9E%E5%BC%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="配置新环境最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合 云服务升级M2+服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常">
+<meta property="og:description" content="Spring Aop好久没碰Aop，最近有个需求，类似收集请求参数的，记录下来做个简单的记录。 大致可以理解成： 有一些方法的请求参数记录下来 有些参数在返回参数记录 异常信息也要记录 获取请求参数然后我就想到，项目中的JWTHandlerInterceptor这个类里面有进行了jwt的解析，可以通过解析出来，放进HttpServletRequest里面，这样通过GetAttribute就可以拿到">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-07-17T08:11:23.000Z">
-<meta property="article:modified_time" content="2025-07-17T08:41:11.978Z">
+<meta property="article:published_time" content="2025-08-14T08:08:09.000Z">
+<meta property="article:modified_time" content="2025-08-20T08:47:34.776Z">
 <meta property="article:author" content="cj">
-<meta property="article:tag" content="springCloud">
+<meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>设置新的云环境 - Hexo</title>
+  <title>SpringAop做一些增强 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="设置新的云环境"></span>
+            <span id="subtitle" data-typed-text="SpringAop做一些增强"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-07-17 16:11" pubdate>
-          July 17, 2025 pm
+        <time datetime="2025-08-14 16:08" pubdate>
+          August 14, 2025 pm
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          539 words
+          631 words
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          5 mins
+          6 mins
         
       </span>
     
@@ -271,17 +271,44 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">设置新的云环境</h1>
+            <h1 id="seo-header">SpringAop做一些增强</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="配置新环境"><a href="#配置新环境" class="headerlink" title="配置新环境"></a>配置新环境</h1><p>最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合</p>
-<h2 id="云服务升级M2"><a href="#云服务升级M2" class="headerlink" title="云服务升级M2+"></a>云服务升级M2+</h2><p>服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常，也会有人打电话关心你，叫你上去看。其实三月份的时候就已经弄好了，但是一些审批人不回消息等等才一直推迟。最近还引入了micrometer的监控，可以看到db、请求数量、请求的处理时间的图表监控。</p>
-<h2 id="地下服务迁云"><a href="#地下服务迁云" class="headerlink" title="地下服务迁云"></a>地下服务迁云</h2><p>地下的服务变成一个空壳子代理，请求直接打到天上的服务。好处是m1的服务不用停掉，也不用迁移，m2的服务要返回一模一样的数据，再通过m1返回去。当然新接入的建议直接接入m2了。唯一要处理的就是旧数据的迁移，要等所有的app都接入到天上的服务，才能开始迁移旧数据。</p>
-<p>搬迁这个跟以前不一样的一点就是，新建立了一个switch表，如果user在这个表，就直接连到天上去，如果user不在这个表，就连的是地下的那一套。这个分批迁移是一个很好的思路，避免了大批量的app同一时间遇到大问题。这个分批的思路，还是比较好的。</p>
-<h2 id="配置新的cloud环境"><a href="#配置新的cloud环境" class="headerlink" title="配置新的cloud环境"></a>配置新的cloud环境</h2><p>新的could环境要申请，申请下来后开防火墙，创建新的服务，各种配置，主要就是跟Home Supp的人沟通，费时间沟通。现在环境已经好了，坐等的就是app的全面搬迁上云。</p>
-<p>地下的链接指向cloud的地址，就可以连接成M1—&gt;M2—&gt;M1的反馈了</p>
+                <h1 id="Spring-Aop"><a href="#Spring-Aop" class="headerlink" title="Spring Aop"></a>Spring Aop</h1><p>好久没碰Aop，最近有个需求，类似收集请求参数的，记录下来做个简单的记录。</p>
+<p>大致可以理解成：</p>
+<p>有一些方法的请求参数记录下来</p>
+<p>有些参数在返回参数记录</p>
+<p>异常信息也要记录</p>
+<h2 id="获取请求参数"><a href="#获取请求参数" class="headerlink" title="获取请求参数"></a>获取请求参数</h2><p>然后我就想到，项目中的JWTHandlerInterceptor这个类里面有进行了jwt的解析，可以通过解析出来，放进HttpServletRequest里面，这样通过GetAttribute就可以拿到clientId了。</p>
+<p>LegacyUser这个参数，可以通过@log的注解，作用在方法上，然后在AOP去拿到这个参数，然后再存起来</p>
+<p>get ClientId: 通过springMVC的方法去拿HttpServletRequest</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">HttpServletRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();<br><span class="hljs-type">String</span> <span class="hljs-variable">clientId</span> <span class="hljs-operator">=</span> (String) request.getAttribute(CommonConstant.CLIENTID);<br></code></pre></td></tr></table></figure>
+
+
+
+<p>请求参数是一个对象的，获取其中某个字段的值:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> DocumentAuditInfoDTO <span class="hljs-title function_">getParamValue</span><span class="hljs-params">(ProceedingJoinPoint joinPoint)</span> &#123;<br>    <span class="hljs-type">MethodSignature</span> <span class="hljs-variable">signature</span> <span class="hljs-operator">=</span> (MethodSignature) joinPoint.getSignature();<br>    <span class="hljs-comment">//value</span><br>    Object[] args = joinPoint.getArgs();<br><br>    <span class="hljs-type">DocumentAuditInfoDTO</span> <span class="hljs-variable">documentPo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DocumentAuditInfoDTO</span>();<br><br><br>    <span class="hljs-keyword">for</span> (Object arg : args) &#123;<br>        <span class="hljs-keyword">if</span> (arg <span class="hljs-keyword">instanceof</span> MultipartFile) &#123;<br>            documentPo.setFileSize(((MultipartFile) arg).getSize());<br>        &#125;<br>        <span class="hljs-keyword">if</span> (arg <span class="hljs-keyword">instanceof</span> DocumentInfoDto) &#123;<br>            documentPo.setDocType(((DocumentInfoDto) arg).getDocType());<br>            documentPo.setDocSubType(((DocumentInfoDto) arg).getDocSubType());<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> documentPo;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="获取异常"><a href="#获取异常" class="headerlink" title="获取异常"></a>获取异常</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Around(&quot;@annotation(com.fwk.ecm.documentprocessor.aop.AuditLog)&quot;)</span><br><span class="hljs-keyword">public</span> Object <span class="hljs-title function_">doAuditLog</span><span class="hljs-params">(ProceedingJoinPoint joinPoint)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>    log.debug(<span class="hljs-string">&quot;do Auditlog&quot;</span>);<br>    <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">startTime</span> <span class="hljs-operator">=</span> LocalDateTime.now();<br>    <span class="hljs-type">Object</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">errorMsg</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-type">DocumentDo</span> <span class="hljs-variable">documentDo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DocumentDo</span>(); <span class="hljs-comment">// 提前初始化</span><br><br>    <span class="hljs-keyword">try</span> &#123;<br>        result = joinPoint.proceed();<br>        <span class="hljs-keyword">return</span> result; <span class="hljs-comment">// 正常执行直接返回</span><br>    &#125; <span class="hljs-keyword">catch</span> (Exception ex) &#123;<br>        <span class="hljs-comment">// 异常处理（保持原始异常）</span><br>        errorMsg = truncateErrorMessage(buildCausedByExceptionInline(ex));<br>        log.error(<span class="hljs-string">&quot;Method [&#123;&#125;] failed: &#123;&#125;&quot;</span>, joinPoint.getSignature().getName(), errorMsg, ex);<br>        <span class="hljs-keyword">throw</span> ex; <span class="hljs-comment">// 关键点：立即抛出，不干扰异常传播</span><br>    &#125; <span class="hljs-keyword">finally</span> &#123;&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="获取返回参数"><a href="#获取返回参数" class="headerlink" title="获取返回参数"></a>获取返回参数</h2><p>在finally里面获取到joinPoint的result的类型，然后转换成自己想要的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-comment">// 确保审计日志不影响主流程</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">endTime</span> <span class="hljs-operator">=</span> LocalDateTime.now();<br>            <span class="hljs-type">long</span> <span class="hljs-variable">executionTime</span> <span class="hljs-operator">=</span> ChronoUnit.MILLIS.between(startTime, endTime);<br><br>            <span class="hljs-comment">// 构建审计数据（抽离到独立方法）</span><br>            buildAuditData(joinPoint, startTime, endTime, executionTime, errorMsg, result, documentDo);<br>            <br>            <span class="hljs-comment">// 异步发送审计事件（避免阻塞）</span><br>            CompletableFuture.runAsync(() -&gt; <br>                auditLogEventProcessor.sendAuditLogEvent(createAuditEvent(documentDo))<br>                .exceptionally(e -&gt; &#123;<br>                    log.warn(<span class="hljs-string">&quot;Failed to send audit log: &#123;&#125;&quot;</span>, e.getMessage());<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>                &#125;);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            log.error(<span class="hljs-string">&quot;Audit log processing failed: &#123;&#125;&quot;</span>, e.getMessage(), e);<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">CompletableFuture.runAsync(<span class="hljs-function"><span class="hljs-params">()</span>-&gt;</span>&#123;<br>    <span class="hljs-regexp">//</span> 这个异步不知道提升大不大<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="一些知识"><a href="#一些知识" class="headerlink" title="一些知识"></a>一些知识</h2><p>@around 是切入切出，既可以拿到入参，也可以拿到出参，也可以拿到异常信息，用的比较多</p>
+<p>joinPoint.proceed()：继续执行被拦截的方法，相当于放行，有返回值可以对应拿到</p>
+<p>Object[] args &#x3D; joinPoint.getArgs();  入参的参数值</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>做这个aop尽量避免在切面又去查询，因为有千千万万个日志（因为我做这些就是为了解决这个查询问题）</p>
+<p>一些获取参数的方法要分清楚，要不然一不小心就空指针</p>
 
                 
               </div>
@@ -315,7 +342,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/springCloud/" class="print-no-link">#springCloud</a>
+        <a href="/tags/spring/" class="print-no-link">#spring</a>
       
     </div>
   
@@ -327,8 +354,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>设置新的云环境</div>
-      <div>https://liu-cj25.github.io/2025/07/17/设置新的云环境/</div>
+      <div>SpringAop做一些增强</div>
+      <div>https://liu-cj25.github.io/2025/08/14/SpringAop做一些增强/</div>
     </div>
     <div class="license-meta">
       
@@ -340,7 +367,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 17, 2025</div>
+          <div>August 14, 2025</div>
         </div>
       
       
@@ -372,18 +399,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/14/SpringAop%E5%81%9A%E4%B8%80%E4%BA%9B%E5%A2%9E%E5%BC%BA/" title="SpringAop做一些增强">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SpringAop做一些增强</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/09/springboot3-x%E7%9A%84%E5%90%84%E9%A1%B9%E6%94%B9%E5%8A%A8/" title="springboot3.x的各项改动">
-                        <span class="hidden-mobile">springboot3.x的各项改动</span>
+                      <a href="/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/" title="设置新的云环境">
+                        <span class="hidden-mobile">设置新的云环境</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
