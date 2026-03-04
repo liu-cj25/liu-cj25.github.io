@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>2025年终总结</title>
+    <link href="/2026/01/27/2025%E5%B9%B4%E7%BB%88%E7%BB%88%E7%BB%93/"/>
+    <url>/2026/01/27/2025%E5%B9%B4%E7%BB%88%E7%BB%88%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<h1 id="2025年终总结"><a href="#2025年终总结" class="headerlink" title="2025年终总结"></a>2025年终总结</h1><p>Agenda</p><ul><li>生活</li><li>家庭</li><li>工作</li><li>投资</li><li>运动</li></ul><h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>11月 哥哥成家，家里添加了一个新成员</p><p>12月 女儿出生，家里又添加了个新生命</p><h2 id="家庭"><a href="#家庭" class="headerlink" title="家庭"></a>家庭</h2><h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>今年的工作重心主要是在迁移老项目上云，还有升级一些老版本到新版本，接入一些新的消息队列。依旧平平淡淡，对业务也更加熟悉了起来，发版迭代时间逐渐拖长了，晚上加班也少了很多。</p><h2 id="投资"><a href="#投资" class="headerlink" title="投资"></a>投资</h2><p>哈哈，说起投资。25年买的债基歇火了，由于股票市场赚钱效应特别好，债基就跌了很多。仅有1%的收益，不禁反思，是不是要均衡配置，也要跑步进场A股了吗？除了A股是不是还可以考虑港股，美股。嗯去了趟香港，办了港卡，目前还在学习阶段，不敢轻易梭哈，还在定投纳斯达克，现在限额了，每天十块钱。先研究研究先吧。港卡确实可以通向全世界，不过最近港币的汇率有点低迷，先观察一段时间。</p><p>了解下k线怎么看，小资金进场A股，不敢轻易梭哈。这句话一直提醒我，黄金白银起飞，恐高不敢买。</p><h2 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>闲聊</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>年度总结</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>育儿第一帖之新手奶爸</title>
     <link href="/2025/09/04/%E8%82%B2%E5%84%BF%E7%AC%AC%E4%B8%80%E5%B8%96%E4%B9%8B%E6%96%B0%E6%89%8B%E5%A5%B6%E7%88%B8/"/>
     <url>/2025/09/04/%E8%82%B2%E5%84%BF%E7%AC%AC%E4%B8%80%E5%B8%96%E4%B9%8B%E6%96%B0%E6%89%8B%E5%A5%B6%E7%88%B8/</url>
@@ -58,7 +83,7 @@
     <link href="/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/"/>
     <url>/2025/07/17/%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BA%91%E7%8E%AF%E5%A2%83/</url>
     
-    <content type="html"><![CDATA[<h1 id="配置新环境"><a href="#配置新环境" class="headerlink" title="配置新环境"></a>配置新环境</h1><p>最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合</p><h2 id="云服务升级M2"><a href="#云服务升级M2" class="headerlink" title="云服务升级M2+"></a>云服务升级M2+</h2><p>服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常，也会有人打电话关心你，叫你上去看。其实三月份的时候就已经弄好了，但是一些审批人不回消息等等才一直推迟。最近还引入了micrometer的监控，可以看到db、请求数量、请求的处理时间的图表监控。</p><h2 id="地下服务迁云"><a href="#地下服务迁云" class="headerlink" title="地下服务迁云"></a>地下服务迁云</h2><p>地下的服务变成一个空壳子代理，请求直接打到天上的服务。好处是m1的服务不用停掉，也不用迁移，m2的服务要返回一模一样的数据，再通过m1返回去。当然新接入的建议直接接入m2了。唯一要处理的就是旧数据的迁移，要等所有的app都接入到天上的服务，才能开始迁移旧数据。</p><p>搬迁这个跟以前不一样的一点就是，新建立了一个switch表，如果user在这个表，就直接连到天上去，如果user不在这个表，就连的是地下的那一套。这个分批迁移是一个很好的思路，避免了大批量的app同一时间遇到大问题。这个分批的思路，还是比较好的。</p><h2 id="配置新的cloud环境"><a href="#配置新的cloud环境" class="headerlink" title="配置新的cloud环境"></a>配置新的cloud环境</h2><p>新的could环境要申请，申请下来后开防火墙，创建新的服务，各种配置，主要就是跟Home Supp的人沟通，费时间沟通。现在环境已经好了，坐等的就是app的全面搬迁上云。</p><p>地下的链接指向cloud的地址，就可以连接成M1—&gt;M2—&gt;M1的反馈了</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="配置新环境"><a href="#配置新环境" class="headerlink" title="配置新环境"></a>配置新环境</h1><p>最近在做的事情比较复杂，记录下，云服务升级M2+、地下服务迁云（分批）、配置新的cloud环境、DNS解析、数据中心搬迁配合</p><h2 id="云服务升级M2"><a href="#云服务升级M2" class="headerlink" title="云服务升级M2+"></a>云服务升级M2+</h2><p>服务迁云后，为了24小时的监控服务健康，要升级到M2+，简单点来说就是要接入promethus的监控、actuator的端点心跳、服务故障转移测试、要准备好apiBot，用于部署后跑测试用例，通过后才可以提单去上prod，假设在半夜的时候服务不正常，也会有人打电话关心你，叫你上去看。其实三月份的时候就已经弄好了，但是一些审批人不回消息等等才一直推迟。最近还引入了micrometer的监控，可以看到db、请求数量、请求的处理时间的图表监控。</p><h2 id="地下服务迁云"><a href="#地下服务迁云" class="headerlink" title="地下服务迁云"></a>地下服务迁云</h2><p>地下的服务变成一个空壳子代理，请求直接打到天上的服务。好处是m1的服务不用停掉，也不用迁移，m2的服务要返回一模一样的数据，再通过m1返回去。当然新接入的建议直接接入m2了。唯一要处理的就是旧数据的迁移，要等所有的app都接入到天上的服务，才能开始迁移旧数据。</p><p>搬迁这个跟以前不一样的一点就是，新建立了一个switch表，如果user在这个表，就直接连到天上去，如果user不在这个表，就连的是地下的那一套。这个分批迁移是一个很好的思路，避免了大批量的app同一时间遇到大问题。这个分批的思路，还是比较好的。</p><h2 id="配置新的cloud环境"><a href="#配置新的cloud环境" class="headerlink" title="配置新的cloud环境"></a>配置新的cloud环境</h2><p>新的could环境要申请，申请下来后开防火墙，创建新的服务，各种配置，主要就是跟Home Supp的人沟通，费时间沟通。现在环境已经好了，坐等的就是app的全面搬迁上云。</p><p>地下的链接指向cloud的地址，就可以连接成M1—&gt;M2—&gt;M1的反馈了</p><p>1.DR当天无法remote回公司电脑。实在要连公司电脑SSL&#x2F;VPN，可以找hkctr。只包括参与DR的人，所以建议做support的人和参加DR的人分开。<br>2.digital home 可以提前verify<br>3. </p><p>fwkecm-3months<br>fwkecm-6months<br>fwkecm-1year<br>fwkecm-2years<br>fwkecm-3years<br>fwkecm-5years<br>fwkecm-7years<br>fwkecm-10years<br>fwkecm-permanence<br>oocl: 8:30<del>18:00<br>cs: 8</del>18:00</p><p>fwkecm-permanence<br>“docType”: “IRIS_FWK”,<br>“docSubType”: “TestsubType01”</p><p>fwkecm-3months<br>“docType”: “IRIS_FWK”,<br>“docSubType”: “TestsubType01”</p><p>fwkecm-6months<br>CargoReleaseAttachmentTOSC</p><p>fwkecm-1year<br>VENDOR_HIGHLIGHTED_DOCIDSP</p><p>fwkecm-2years<br>APPEAL_FILEIRIS4_DOCU</p><p>fwkecm-3years<br>SANCTION_EMAIL_ATTIRIS4_CPF</p><p>fwkecm-5years<br>SC_FMCIRIS4_TNM</p><p>fwkecm-7years<br>PAYMENT_SLIPSINV</p><p>fwkecm-10years<br>OBQRNIRIS4_DND</p><p>Watch 5 46m 黑 2个<br>Watch 5 42m 黑 1个<br>Action5pro 1个</p>]]></content>
     
     
     <categories>
@@ -171,7 +196,7 @@
     <link href="/2025/02/06/%E6%98%A5%E7%A4%BE/"/>
     <url>/2025/02/06/%E6%98%A5%E7%A4%BE/</url>
     
-    <content type="html"><![CDATA[<h2 id="春社"><a href="#春社" class="headerlink" title="春社"></a>春社</h2><p>2025年的春社日是阳历3月20日春社是中国传统的民俗节日，通常在立春后的第五个戊日举行。这个节日主要是为了祭祀土地神，祈求丰收。</p><p>在我们家运用春社，就是为了祭拜先人，即选择在3月20日前，扫爷爷墓的。</p><p>春社的计算，我也是刚学会，用的deepseek去学的</p><p>立春后的第五个戊日的计算方法如下：</p><ol><li><strong>确定立春的日期</strong>：首先要知道立春是哪一天。比如，2025年的立春是2月3日。</li><li><strong>按照干支纪日的顺序计算戊日</strong>：从立春当天开始，按照干支纪日的顺序计算戊日。干支纪日中，天干和地支各有十个，按照一定的顺序循环排列，形成六十个不同的组合，称为六十甲子。每个甲子代表一天，每过六天，天干和地支的组合会重复一次，即又是同一个甲子日。</li><li>找到第五个戊日：戊日是按照天干的第五个字母“戊”来确定的，每过五天，天干中的“戊”字会再次出现，形成一个新的戊日。因此，立春后的第五个戊日就是春社日</li></ol><p>简洁点就是：</p><p>计算的规则是，立春后的第五个戊日<br>戊日如何计算？ 立春后第五天是第一个戊日，之后每隔十天就是一个戊日</p><p>2025年的2月3号是立春<br>那么第一个戊日就是2月8号<br>第二个戊日就是2月18号<br>第三个戊日就是2月28号<br>第四个戊日就是3月10号<br>第五个戊日就是3月20号</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="春社"><a href="#春社" class="headerlink" title="春社"></a>春社</h2><p>2025年的春社日是阳历3月20日春社是中国传统的民俗节日，通常在立春后的第五个戊日举行。这个节日主要是为了祭祀土地神，祈求丰收。</p><p>在我们家运用春社，就是为了祭拜先人，即选择在3月20日前，扫爷爷墓的。</p><p>春社的计算，我也是刚学会，用的deepseek去学的</p><p>立春后的第五个戊日的计算方法如下：</p><ol><li><strong>确定立春的日期</strong>：首先要知道立春是哪一天。比如，2025年的立春是2月3日。</li><li><strong>按照干支纪日的顺序计算戊日</strong>：从立春当天开始，按照干支纪日的顺序计算戊日。干支纪日中，天干和地支各有十个，按照一定的顺序循环排列，形成六十个不同的组合，称为六十甲子。每个甲子代表一天，每过六天，天干和地支的组合会重复一次，即又是同一个甲子日。</li><li>找到第五个戊日：戊日是按照天干的第五个字母“戊”来确定的，每过10天，天干中的“戊”字会再次出现，形成一个新的戊日。因此，立春后的第五个戊日就是春社日</li></ol><p>简洁点就是：</p><p>计算的规则是，立春后的第五个戊日<br>戊日如何计算？ 立春后第一个戊日不固定，之后每隔十天就是一个戊日</p><p>2025年的2月3号是立春<br>那么第一个戊日就是2月8号<br>第二个戊日就是2月18号<br>第三个戊日就是2月28号<br>第四个戊日就是3月10号<br>第五个戊日就是3月20号</p><p>更新<br>2026年2月4日是立春</p><p>接下来看万年历，看看第一个戊日是哪天，2月13是戊午日，就是第一个戊日</p><p>然后每隔十天就是一个戊日。</p><table><thead><tr><th align="left">戊日顺序</th><th align="left">公历日期</th><th align="left">农历日期</th><th align="left">当日干支</th></tr></thead><tbody><tr><td align="left">第一个戊日</td><td align="left">2026年2月13日</td><td align="left">腊月廿六</td><td align="left">戊午日</td></tr><tr><td align="left">第二个戊日</td><td align="left">2026年2月23日</td><td align="left">正月初七</td><td align="left">戊辰日</td></tr><tr><td align="left">第三个戊日</td><td align="left">2026年3月5日</td><td align="left">正月十七</td><td align="left">戊寅日</td></tr><tr><td align="left">第四个戊日</td><td align="left">2026年3月15日</td><td align="left">正月廿七</td><td align="left">戊子日</td></tr><tr><td align="left"><strong>第五个戊日 (春社)</strong></td><td align="left"><strong>2026年3月25日</strong></td><td align="left"><strong>二月初七</strong></td><td align="left"><strong>戊戌日</strong></td></tr></tbody></table><p>如果没错就是3月25日了</p>]]></content>
     
     
     
